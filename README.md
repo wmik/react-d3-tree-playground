@@ -10,3 +10,4 @@ Simple setup for React D3 tree integration with hooks support.
 - [D3 drag/zoom demo collection](https://observablehq.com/@d3/drag-zoom?collection=@d3/d3-drag)
 - [D3 collapsible tree demo](https://observablehq.com/@d3/collapsible-tree)
 - [D3 random tree demo](https://observablehq.com/@d3/random-tree)
+- [React + D3 tree demo (v3.\*.\*)](https://github.com/coreseekdev/react-org-chart)
