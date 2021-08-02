@@ -1,2 +1,12 @@
 # react-d3-tree-playground
-Created with CodeSandbox
+
+Simple setup for React D3 tree integration with hooks support.
+
+# References & resources
+
+- [React D3 tutorial](https://wattenberger.com/blog/react-and-d3)
+- [D3 hierachy official docs](https://github.com/d3/d3-hierarchy)
+- [D3 drag official docs](https://github.com/d3/d3-drag)
+- [D3 drag/zoom demo collection](https://observablehq.com/@d3/drag-zoom?collection=@d3/d3-drag)
+- [D3 collapsible tree demo](https://observablehq.com/@d3/collapsible-tree)
+- [D3 random tree demo](https://observablehq.com/@d3/random-tree)
