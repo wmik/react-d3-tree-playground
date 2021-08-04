@@ -1,6 +1,6 @@
 import React from 'react';
 import data from './data';
-import { Chart } from './Chart';
+import { Chart } from './canvas/Chart';
 
 export default function App() {
   let [dataCache, cacheData] = React.useState(data);

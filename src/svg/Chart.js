@@ -1,8 +1,7 @@
 import React from 'react';
-import { curveLinear } from 'd3-shape';
-import { useD3Tree } from './use-d3-tree';
-import { useD3Zoom } from './use-d3-zoom';
-import { useD3TreeCurve } from './use-d3-tree-curve';
+import { useD3Tree } from '../use-d3-tree';
+import { useD3Zoom } from '../use-d3-zoom';
+import { useD3TreeCurve } from '../use-d3-tree-curve';
 import { Node, NodeGroup } from './Node';
 import { Link, LinkGroup } from './Link';
 
@@ -35,12 +34,11 @@ export function Chart({
     nodeMarginY,
     expandDepth
   });
-  let { linksPathCache } = useD3TreeCurve({
+  let { pointsCache } = useD3TreeCurve({
     nodeWidth,
     nodeHeight,
     nodeMarginY,
-    links: linksCache,
-    curve: curveLinear
+    links: linksCache
   });
   let { transformCache, elementRef } = useD3Zoom({
     extent: [
@@ -54,7 +52,7 @@ export function Chart({
     <svg viewBox={viewBox} ref={elementRef}>
       <CanvasMemo transform={transformCache}>
         <LinkGroupMemo>
-          <For of={linksPathCache.map((link) => ({ link }))}>
+          <For of={pointsCache.map((points) => ({ points }))}>
             <LinkMemo />
           </For>
         </LinkGroupMemo>

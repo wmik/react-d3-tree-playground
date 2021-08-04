@@ -1,5 +1,4 @@
 import React from 'react';
-import { line, CurveFactory } from 'd3-shape';
 
 /**
  *
@@ -11,7 +10,6 @@ import { line, CurveFactory } from 'd3-shape';
  *
  * @typedef D3TreeCurveProps
  * @type {Object}
- * @property {CurveFactory} curve
  * @property {number} nodeWidth
  * @property {number} nodeHeight
  * @property {number} nodeMarginY
@@ -20,28 +18,17 @@ import { line, CurveFactory } from 'd3-shape';
  *
  * @typedef D3TreeCurveHookOptions
  * @type {Object}
- * @property {Array<string>} linksPathCache
+ * @property {Array<string>} pointsCache
  *
  *
- * @param {CurveFactory} curve
+ * @param {D3TreeCurveProps}
  * @returns {D3TreeCurveHookOptions}
  */
-export function useD3TreeCurve({
-  curve,
-  links,
-  nodeWidth,
-  nodeHeight,
-  nodeMarginY
-}) {
-  let [linksPathCache, cacheLinkPaths] = React.useState([]);
+export function useD3TreeCurve({ links, nodeWidth, nodeHeight, nodeMarginY }) {
+  let [pointsCache, cachePoints] = React.useState([]);
 
   React.useEffect(() => {
-    let computeLinkAngle = line()
-      .x((node) => node.x)
-      .y((node) => node.y)
-      .curve(curve);
-
-    function renderLinkAngle(node) {
+    function computePoints(node) {
       let points = [
         {
           x: node.source.x + nodeWidth / 2,
@@ -61,11 +48,11 @@ export function useD3TreeCurve({
         }
       ];
 
-      return computeLinkAngle(points);
+      return points;
     }
 
-    cacheLinkPaths(links.map(renderLinkAngle));
-  }, [curve, links, nodeHeight, nodeWidth, nodeMarginY]);
+    cachePoints(links.map(computePoints));
+  }, [links, nodeHeight, nodeWidth, nodeMarginY]);
 
-  return { linksPathCache };
+  return { pointsCache };
 }

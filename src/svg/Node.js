@@ -1,6 +1,6 @@
 import React from 'react';
 import { select } from 'd3-selection';
-import { useD3Drag } from './use-d3-drag';
+import { useD3Drag } from '../use-d3-drag';
 
 function NodeContainer({ width, height }) {
   return (
