@@ -1,14 +1,17 @@
 # react-d3-tree-playground
 
-Simple setup for React D3 tree integration with hooks support.
+> Simple setup for React D3 tree integration with hooks support.
 
-# Features
+## Features
 
 - 💅 Headless - Build your own custom user interface to fit your style.
 - 🎛️ Configurable - Adjust settings to match your requirements.
-- 🤏 Drag n Drop interaction demo
 
-# References & resources
+## Demo
+
+[Org chart demo](https://codesandbox.io/s/react-d3-tree-playground-303hs) with 🤏 Drag n Drop interaction demo
+
+## References & resources
 
 - [React D3 tutorial](https://wattenberger.com/blog/react-and-d3)
 - [D3 hierachy official docs](https://github.com/d3/d3-hierarchy)

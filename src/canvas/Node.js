@@ -54,6 +54,10 @@ function PersonIcon({ scale = 1, translateX = 0, translateY = 0 }) {
   );
 }
 
+function PersonIconLabel({ x, y, children }) {
+  return <Text x={x} y={y} text={children} fontFamily="sans-serif" />;
+}
+
 function MiniNodeList({ children, width = 150, height = 200, x = 0, y = 0 }) {
   return (
     <Group>
@@ -86,7 +90,7 @@ function PersonIconContainerSm({ width, height, x, y }) {
   );
 }
 
-function MiniNode({ x, y, scale = 1.5, width = 120, height = 40 }) {
+function MiniNode({ x, y, label, scale = 1.5, width = 120, height = 40 }) {
   return (
     <Group draggable>
       <Rect
@@ -108,6 +112,7 @@ function MiniNode({ x, y, scale = 1.5, width = 120, height = 40 }) {
         fill="transparent"
       />
       <PersonIcon scale={scale} translateX={x + 2} translateY={y} />
+      <PersonIconLabel x={x + 50} y={y + 12} children={label} />
     </Group>
   );
 }
@@ -187,9 +192,22 @@ export function Node({
         translateX={node.x + 50}
         translateY={node.y + 100}
       />
+      <PersonIconLabel
+        x={node.x + 72}
+        y={node.y + nodeHeight / 2}
+        children={node.data.name}
+      />
       <MiniNodeList x={node.x + 235} y={node.y + 56}>
-        <MiniNode x={node.x + 240} y={node.y + 60} />
-        <MiniNode x={node.x + 240} y={node.y + 110} />
+        <MiniNode
+          label={`${node.data.name}- mini 1`}
+          x={node.x + 240}
+          y={node.y + 60}
+        />
+        <MiniNode
+          label={`${node.data.name}- mini 2`}
+          x={node.x + 240}
+          y={node.y + 110}
+        />
       </MiniNodeList>
       <NodeChildCount
         x={node.x + nodePaddingX}
