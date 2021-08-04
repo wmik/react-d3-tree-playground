@@ -209,6 +209,7 @@ export function Node({ node, computeLayout, cacheLinks, cacheNodes }) {
         y={nodeHeight - nodePaddingY}
         children={node.data.children?.length}
         onClick={() => {
+          // not ideal
           if (node.children) {
             node.children = null;
           } else {

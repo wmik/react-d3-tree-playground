@@ -2,6 +2,12 @@
 
 Simple setup for React D3 tree integration with hooks support.
 
+# Features
+
+- 💅 Headless - Build your own custom user interface to fit your style.
+- 🎛️ Configurable - Adjust settings to match your requirements.
+- 🤏 Drag n Drop interaction demo
+
 # References & resources
 
 - [React D3 tutorial](https://wattenberger.com/blog/react-and-d3)
@@ -11,3 +17,4 @@ Simple setup for React D3 tree integration with hooks support.
 - [D3 collapsible tree demo](https://observablehq.com/@d3/collapsible-tree)
 - [D3 random tree demo](https://observablehq.com/@d3/random-tree)
 - [React + D3 tree demo (v3.\*.\*)](https://github.com/coreseekdev/react-org-chart)
+- [Konva official docs](https://konvajs.org/docs/index.html)

@@ -198,6 +198,7 @@ export function Node({
         children={node.data.children?.length}
         stageRef={stageRef}
         onClick={() => {
+          // not ideal
           if (node.children) {
             node.children = null;
           } else {

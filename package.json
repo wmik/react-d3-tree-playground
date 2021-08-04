@@ -5,7 +5,8 @@
   "keywords": [
     "react",
     "hooks",
-    "d3-tree"
+    "d3-tree",
+    "org-chart"
   ],
   "main": "src/index.js",
   "dependencies": {
