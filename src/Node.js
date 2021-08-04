@@ -50,6 +50,10 @@ function PersonIcon({ scale = 1, translateX = 0, translateY = 0 }) {
   );
 }
 
+function PersonIconLabel({ x, y, children }) {
+  return <text x={x} y={y} children={children} fontFamily="sans-serif" />;
+}
+
 function MiniNodeList({ children, width = 150, height = 200, x = 0, y = 0 }) {
   return (
     <g>
@@ -81,7 +85,15 @@ function PersonIconContainerSm({ width, height }) {
   );
 }
 
-function MiniNode({ parentRef, x, y, scale = 1.5, width = 120, height = 40 }) {
+function MiniNode({
+  parentRef,
+  x,
+  y,
+  label,
+  scale = 1.5,
+  width = 120,
+  height = 40
+}) {
   let [transformCache, cacheTransform] = React.useState(`${x} ${y}`);
   let [cursorState, setCursorState] = React.useState('grab');
   let ref = useD3Drag({
@@ -122,6 +134,7 @@ function MiniNode({ parentRef, x, y, scale = 1.5, width = 120, height = 40 }) {
         fill="transparent"
       />
       <PersonIcon scale={scale} translateX={1} />
+      <PersonIconLabel x={50} y={24} children={label} />
     </g>
   );
 }
@@ -153,17 +166,11 @@ export function Node({ node, computeLayout, cacheLinks, cacheNodes }) {
   return (
     <g transform={`translate(${node?.x} ${node?.y})`} ref={ref}>
       <NodeContainer width={nodeWidth} height={nodeHeight} />
-      <NodeTitle
-        x={nodePaddingX}
-        y={nodePaddingY}
-        children={node.data.name}
-        fontFamily="sans-serif"
-      />
+      <NodeTitle x={nodePaddingX} y={nodePaddingY} children={node.data.name} />
       <NodeLevel
         x={nodeWidth - (nodePaddingX + levelPaddingRight)}
         y={nodePaddingY}
         children={node.depth}
-        fontFamily="sans-serif"
       />
       <NodeDivider
         x1={nodePaddingX}
@@ -182,14 +189,24 @@ export function Node({ node, computeLayout, cacheLinks, cacheNodes }) {
         y={60}
       />
       <PersonIcon scale={2.5} translateX={30} translateY={50} />
+      <PersonIconLabel x={80} y={nodeHeight / 2} children={node.data.name} />
       <MiniNodeList x={235} y={56}>
-        <MiniNode parentRef={ref} x={240} y={60} />
-        <MiniNode parentRef={ref} x={240} y={110} />
+        <MiniNode
+          parentRef={ref}
+          x={240}
+          y={60}
+          label={`${node.data.name}- mini 1`}
+        />
+        <MiniNode
+          parentRef={ref}
+          x={240}
+          y={110}
+          label={`${node.data.name}- mini 2`}
+        />
       </MiniNodeList>
       <NodeChildCount
         x={nodePaddingX}
         y={nodeHeight - nodePaddingY}
-        fontFamily="sans-serif"
         children={node.data.children?.length}
         onClick={() => {
           if (node.children) {
